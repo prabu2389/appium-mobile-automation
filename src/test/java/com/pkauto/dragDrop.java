@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class dragDrop extends BaseTest{
+public class dragDrop extends BaseTest {
 
     @Test
     public void drapDropElement() throws InterruptedException {
@@ -17,10 +17,10 @@ public class dragDrop extends BaseTest{
 
         WebElement source = driver.findElement(By.id("io.appium.android.apis:id/drag_dot_1"));
 
-        dragDrop(source,620, 540);
+        dragDrop(source, 620, 540);
 
         Thread.sleep(2000);
-        Assert.assertEquals(driver.findElement(By.id("io.appium.android.apis:id/drag_result_text")).getText(),"Dropped!");
+        Assert.assertEquals(driver.findElement(By.id("io.appium.android.apis:id/drag_result_text")).getText(), "Dropped!");
 
     }
 }

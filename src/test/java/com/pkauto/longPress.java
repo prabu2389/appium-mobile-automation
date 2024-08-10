@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class longPress extends BaseTest{
+public class longPress extends BaseTest {
 
     @Test
     public void LongPressGesture() throws InterruptedException {
@@ -21,7 +21,7 @@ public class longPress extends BaseTest{
         Thread.sleep(2000);
 
         String menuText = driver.findElement(By.id("android:id/title")).getText();
-        Assert.assertEquals(menuText,"Sample menu");
-        
+        Assert.assertEquals(menuText, "Sample menu");
+
     }
 }
