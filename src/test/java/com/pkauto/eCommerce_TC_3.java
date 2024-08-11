@@ -75,5 +75,6 @@ public class eCommerce_TC_3 extends BaseTest {
         googlQ.sendKeys(Keys.ENTER);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(), 'Including results for ')]"))));
 
+
     }
 }

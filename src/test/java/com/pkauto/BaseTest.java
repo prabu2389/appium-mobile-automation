@@ -41,7 +41,8 @@ public class BaseTest {
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel API 30"); //emulator
-        options.setApp("C:\\Users\\prabh\\OneDrive\\Documents\\GitHub\\appium-mobile-automation\\src\\test\\java\\resources\\General-Store.apk");
+//        options.setApp("C:\\Users\\prabh\\OneDrive\\Documents\\GitHub\\appium-mobile-automation\\src\\test\\java\\resources\\General-Store.apk");
+        options.setCapability("browserName","Chrome");
         options.setAutomationName("UiAutomator2");
         options.setCapability("uiautomator2ServerLaunchTimeout", 60000);
 
