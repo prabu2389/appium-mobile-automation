@@ -1,6 +1,7 @@
 package com.pkauto;
 
 
+import com.pkauto.TestUtils.BaseTest;
 import org.openqa.selenium.ScreenOrientation;
 import org.testng.annotations.Test;
 

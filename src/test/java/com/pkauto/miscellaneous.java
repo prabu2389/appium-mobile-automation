@@ -2,6 +2,7 @@ package com.pkauto;
 
 
 import com.google.common.collect.ImmutableMap;
+import com.pkauto.TestUtils.BaseTest;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.Activity;
 import org.openqa.selenium.By;
