@@ -2,6 +2,7 @@ package com.pkauto;
 
 
 import com.pkauto.TestUtils.BaseTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,8 +14,9 @@ import java.util.List;
 public class eCommerce_TC_1 extends BaseTest {
 
 
-    @Test(dataProvider = "getData")
+    @Test(dataProvider = "getData",groups = {"Smoke"})
     public void fillForm(HashMap<String, String> input) throws InterruptedException {
+
 
 //        FormPage formPage = new FormPage(driver);
         formPage.setNameField(input.get("name"));
@@ -33,7 +35,7 @@ public class eCommerce_TC_1 extends BaseTest {
 
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preSetup() {
 
         formPage.setActivity();
@@ -45,6 +47,9 @@ public class eCommerce_TC_1 extends BaseTest {
         List<HashMap<String, String>> data;
         data = getJsonData("C:\\Users\\prabh\\OneDrive\\Documents\\GitHub\\appium-mobile-automation\\src\\test\\java\\com\\pkauto\\testData\\eCommerce.json");
 
+        if(data.isEmpty()){
+            throw new IOException("Data file empty or could not be read.");
+        }
         return new Object[] [] {
                 {data.getFirst()},
                 {data.get(1)}

@@ -10,6 +10,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class FormPage extends AndroidActions {
 
@@ -68,6 +72,9 @@ public class FormPage extends AndroidActions {
 
 
         webDriver.startActivity(activity);
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.androidsample.generalstore:id/nameField")));
+
     }
 
     public void setCountrySelection(String countryName) throws InterruptedException {

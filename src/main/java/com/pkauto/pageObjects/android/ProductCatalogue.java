@@ -12,35 +12,35 @@ import java.util.List;
 
 public class ProductCatalogue extends AndroidActions {
 
-    AndroidDriver webDriver;
+    AndroidDriver driver;
 
     FormPage formPage;
 
     public ProductCatalogue(AndroidDriver driver) {
         super(driver);
-        this.webDriver=driver;
+        this.driver=driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(id = "com.androidsample.generalstore:id/productName")
+    @AndroidFindBy(id = "//android.widget.TextView[@text='ADD TO CART']")
     private List<WebElement> addToCart;
 
     @FindBy(id = "com.androidsample.generalstore:id/appbar_btn_cart")
     private WebElement cart;
 
     public void addItemToCartByIndex (int index) {
-//        addToCart.get(index).click();
+        addToCart.get(index).click();
 
-        int productCount = addToCart.size();
-        for (index = 0; index < productCount; index++) {
-            addToCart.get(index).click();
-        }
+//        int productCount = addToCart.size();
+//        for (index = 0; index < productCount; index++) {
+//            addToCart.get(index).click();
+//        }
 
     }
 
     public CartPage goToCartPage() throws InterruptedException {
         cart.click();
         Thread.sleep(2000);
-        return new CartPage(webDriver);
+        return new CartPage(driver);
     }
 }

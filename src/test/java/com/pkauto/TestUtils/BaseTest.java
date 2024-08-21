@@ -1,5 +1,7 @@
 package com.pkauto.TestUtils;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.pkauto.pageObjects.android.CartPage;
 import com.pkauto.pageObjects.android.FormPage;
 import com.pkauto.pageObjects.android.ProductCatalogue;
@@ -21,8 +23,9 @@ public class BaseTest extends AppiumUtils {
     public FormPage formPage;
     public ProductCatalogue productCatalogue;
     public CartPage cartPage;
+    public ExtentReports extentReports;
 
-    @BeforeClass
+    @BeforeClass (alwaysRun = true)
     public void ConfigureAppium() throws IOException, URISyntaxException {
         //Android Driver
         // Appium Code > Appium Server > Mobile
@@ -30,7 +33,7 @@ public class BaseTest extends AppiumUtils {
         Properties prop = new Properties();
         FileInputStream fileInputStream = new FileInputStream("C:\\Users\\prabh\\OneDrive\\Documents\\GitHub\\appium-mobile-automation\\src\\main\\resources\\data.properties");
         prop.load(fileInputStream);
-        String ipAddress = prop.getProperty("ipAddress");
+        String ipAddress = System.getProperty("ipAddress")!=null ? System.getProperty("ipAddress") : prop.getProperty("ipAddress");
         String port = prop.getProperty("port");
         String automationName = prop.getProperty("automationName");
         String AndroidDeviceName = prop.getProperty("AndroidDeviceName");
@@ -48,11 +51,10 @@ public class BaseTest extends AppiumUtils {
 
         driver = new AndroidDriver(service.getUrl(), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-
         formPage = new FormPage(driver);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
         service.stop();
